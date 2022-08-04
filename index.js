@@ -63,9 +63,21 @@ app.post("/salvarpergunta", (req, res)=>{
       descricao: descricao
    }).then(()=>{
       res.redirect("/")
-   })
+   });
    
 })
+
+// criando outra rota
+
+app.post("/responder", ((req, res)=>{
+   var corpo = req.body.corpo;
+   var perguntaID = req.body.pergunta;
+   Resposta.create({
+      corpo: corpo,
+      perguntaId: perguntaId
+   })
+
+}))
    
 // PORTA CRIADA
 app.listen(8080, function(){ console.log("App rodando!!!")})
